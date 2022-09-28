@@ -25,6 +25,7 @@ const getWeatherDataFromApi = async () => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${tokenKey}&units=${units}&lang=${lang}`;
 
   try {
+    //const response = await axios(url); response.data destruction edilir
     const response = await fetch(url).then((response) => response.json());
     console.log(response);
     const { main, sys, weather, name } = response;
@@ -67,6 +68,20 @@ const getWeatherDataFromApi = async () => {
 
     list.prepend(createdLi);
     form.reset();
+    //capturing
+
+    // createdLi.addEventListener("click", (e) => {
+    //   if (e.target.tagName == "IMG") {
+    //     e.target.src = e.target.src == iconUrl ? iconUrlAWS : iconUrl;
+    //   }
+    // });
+
+    //bubbling
+
+    // createdLi.addEventListener("click", (e) => {
+    //   alert(`${e.target.tagName} element is clicked!`);
+    //   window.location.href = "https://istediğin adres.com";
+    // });
   } catch (error) {
     msg.innerText = `404 (City Not Found)`;
     setTimeout(() => {
